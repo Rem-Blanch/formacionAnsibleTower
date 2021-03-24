@@ -12,7 +12,6 @@
          Aquí paro el Servidor de BBDD si existe y está arrancando
 
     - name: Descarga e instalacion del Servidor de BBDD
-      when: parada_server_apps.failed
       block:
         - name: Descargar servidor de BBDD
           debug:
