@@ -1,0 +1,63 @@
+- hosts: all
+  order: inventory
+  vars:
+    puerto_bbdd_app: 3443
+  gather_facts: True
+
+        
+  tasks:
+  
+    - name: Preparación de la Base de datos
+      debug:
+        msg: Inicio del Playbook 2
+  
+    - name: Trabajo en la BBDD
+      when: ansible_facts.distribution == "Ubuntu" or ansible_facts.distribution == "Debian"
+      block:
+        - name: Actualizar el sistema operativo
+          debug:
+            msg: | 
+               Command apt ugrade
+        
+        - name: Actualizar el sistema operativo
+          debug:
+            msg: | 
+               Command apt update
+               
+        - name: Apertura de puertos en base de datos
+          when: ansible_facts.distribution == "Ubuntu"
+          debug:
+            msg: ufw --add-port={{ puerto_bbdd_app }}/tcp
+        
+        - name: Apertura de puertos en base de datos
+          when: ansible_facts.distribution == "Debian"
+          debug:
+            msg: iptables.....{{ puerto_bbdd_app }}
+        
+               
+    - name: Trabajo en el SO CentOS/Fedora
+      when: ansible_facts.distribution == "CentOS" or ansible_facts.distribution == "Fedora"
+      block:
+        - name: Actualizar el sistema operativo
+          debug:
+            msg: | 
+               Command yum upgrade
+        
+        - name: Actualizar el sistema operativo
+          debug:
+            msg: | 
+               Command yum update
+        
+        - name: Apertura de puertos en base de datos
+          debug:
+            msg: firewalld --add-port={{ puerto_bbdd_app }}/tcp
+        
+
+    - name: Configurar variables SO
+      debug:
+        msg: Configuraciones del SO
+        
+    - name: Creación usuarios
+      debug:
+        msg: Crear usuarios
+    

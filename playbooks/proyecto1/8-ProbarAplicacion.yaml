@@ -1,0 +1,28 @@
+- hosts: all
+  order: inventory
+  vars: {}
+  gather_facts: True
+
+        
+  tasks:
+
+    - name: Probar la aplicacion. Prueba 1
+      shell:
+        cmd: echo "Esto parece que ha ido BIEN"
+      register: prueba1
+      failed_when: '"ERROR" in prueba1.stdout'
+         
+    - name: Probar la aplicacion. Prueba 2
+      debug:
+        msg: | 
+         Aquí realizo la prueba 2.
+         
+    - name: Probar la aplicacion. Prueba 3
+      debug:
+        msg: | 
+         Aquí realizo la prueba 3.
+    
+    - name: Probar la aplicacion. Prueba 4
+      debug:
+        msg: | 
+         Aquí realizo la prueba 4.

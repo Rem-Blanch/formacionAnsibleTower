@@ -1,0 +1,25 @@
+- hosts: all
+  order: inventory
+  vars: {}
+  gather_facts: True
+
+        
+  tasks:
+
+    - name: Conexión a la BBDD
+      debug:
+        msg: | 
+         Aquí conecto con la BBDD.
+         
+    - name: Borrado contenido de la BBDD
+      debug:
+        msg: | 
+         Aquí borro la base de datos
+      tags:
+        - borrarBBDD
+
+    - name: Crear estructuras BBDD
+      debug:
+        msg: | 
+         Aquí se crea las estructuras de BBDD.
+         

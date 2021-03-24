@@ -1,0 +1,31 @@
+- hosts: all
+  order: inventory
+  vars: {}
+  gather_facts: True
+
+        
+  tasks:
+
+    - name: Parar servidor de BBDD
+      debug:
+        msg: | 
+         Aquí paro el Servidor de BBDD si existe y está arrancando
+
+    - name: Descarga e instalacion del Servidor de BBDD
+      when: parada_server_apps.failed
+      block:
+        - name: Descargar servidor de BBDD
+          debug:
+            msg: | 
+             Inicio del Playbook 4
+             Descargar servidor con cmd correspondientes.
+      
+        - name: Instalar el servidor de BBDD
+          debug:
+            msg: Aquí se instala el servidor de BBDD.
+
+
+    - name: Arranque del servidor de BBDD
+      debug:
+        msg: Arrancar servidor de BBDD.
+    

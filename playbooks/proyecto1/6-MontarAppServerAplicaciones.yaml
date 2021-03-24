@@ -1,0 +1,19 @@
+- hosts: all
+  order: inventory
+  vars: {}
+  gather_facts: True
+
+        
+  tasks:
+
+    - name: Conexión al Server de aplicaciones
+      debug:
+        msg: | 
+         Aquí conecto con el Server de aplicaciones
+         
+
+    - name: Instalar la aplicación
+      debug:
+        msg: | 
+         Aquí instalo la aplicación
+         

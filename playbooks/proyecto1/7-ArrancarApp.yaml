@@ -1,0 +1,12 @@
+- hosts: all
+  order: inventory
+  vars: {}
+  gather_facts: True
+
+        
+  tasks:
+
+    - name: Arrancar la aplicación
+      debug:
+        msg: | 
+         Aquí arranco la aplicación.
